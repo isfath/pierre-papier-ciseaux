@@ -1,14 +1,12 @@
 public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println(Standard.Pierre.gagneContre(Standard.Ciseaux));
-        System.out.println(Coup.valueOf("Pierre"));
-        System.out.println(Puits.INSTANCE.gagneContre(Standard.Ciseaux));
-        for (Coup col : Coup.values())
+    //static car appelée sans instance (ici par main)
+    static void afficheTableau(Coup[] coups) {
+        for (Coup col : coups)
             System.out.print("\t" + col);
         System.out.println();
-        for (Coup x : Coup.values()) {
+        for (Coup x : coups) {
             System.out.print(x + "\t");
-            for (Coup y : Coup.values()) {
+            for (Coup y : coups) {
                 if (x == y)
                     System.out.print('\t');
                 else
@@ -16,5 +14,12 @@ public class App {
             }
             System.out.println();
         }
+    }
+    public static void main(String[] args) throws Exception {
+        System.out.println(Standard.Pierre.gagneContre(Standard.Ciseaux));
+        System.out.println(Coup.valueOf("Pierre"));
+        System.out.println(Puits.INSTANCE.gagneContre(Standard.Ciseaux));
+        afficheTableau(Standard.values());
+        afficheTableau(Coup.values());
     }
 }

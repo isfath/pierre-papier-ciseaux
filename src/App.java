@@ -29,7 +29,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Voulez-vous jouer avec le puits ?");
+        System.out.print("Voulez-vous jouer avec le puits ? ");
         String rep = sc.nextLine().toLowerCase();
         Coup[] poss;
         boolean puits;
@@ -50,14 +50,16 @@ public class App {
         int ordi = 0, joueur = 0;
         while (true) {
             Coup mien = poss[ran.nextInt(poss.length)]; //pas de triche !
-            System.out.println("Que jouez-vous ?");
+            System.out.print("Que jouez-vous ? ");
             String cmd = sc.nextLine();
             if (cmd.length() == 0)
                 break;
             try {
                 cmd = capitalize(cmd);
                 Coup sien = puits ? Coup.valueOf(cmd) : Standard.valueOf(cmd);
-                System.out.println(mien);
+                System.out.println("J'avais choisi " +
+                    //toLowerCase sinon on se demande de quel Pierre on parle !
+                    mien.toString().toLowerCase() + ".");
                 if (mien.gagneContre(sien)) {
                     System.out.println("J'ai gagné !");
                     ordi++;

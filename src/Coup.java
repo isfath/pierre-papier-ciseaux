@@ -21,7 +21,7 @@ interface Coup {
     /* une interface n'a pas de code dans ses méthodes non-default
        les méthodes statiques ne sont pas concernées par cette règle ! */
     static Coup valueOf(String str) {
-        if (str == "Puits")
+        if (str.equals("Puits"))
             return Puits.INSTANCE;
         else
             return Standard.valueOf(str);

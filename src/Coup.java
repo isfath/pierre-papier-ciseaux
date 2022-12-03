@@ -10,6 +10,15 @@ interface Coup {
                 /* le choix de la méthode à appeler (method overloading)
                    se fait à la compilation, selon les types déclarés */
     }
+
+    /* une interface n'a pas de code dans ses méthodes non-default
+       les méthodes statiques ne sont pas concernées par cette règle ! */
+    static Coup valueOf(String str) {
+        if (str == "Puits")
+            return Puits.INSTANCE;
+        else
+            return Standard.valueOf(str);
+    }
 }
 
 class Puits implements Coup {

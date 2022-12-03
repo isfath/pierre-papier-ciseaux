@@ -1,4 +1,9 @@
 interface Coup {
+    static final Coup[] VALUES = {
+        Puits.INSTANCE,
+        Standard.Pierre, Standard.Papier, Standard.Ciseaux,
+    };
+
     default boolean gagneContre(Coup autre) {
         if (autre == Puits.INSTANCE)
             return false;
